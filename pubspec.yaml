@@ -41,7 +41,8 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets\images\splash_bg.png
+    - assets\images\
+    - assets\content\
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
