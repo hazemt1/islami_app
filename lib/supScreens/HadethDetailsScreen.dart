@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:islamic_app/Screens/MyHomePage.dart';
 
-import 'Hadeth.dart';
+import '../data/Hadeth.dart';
 
 class HadeethDetailsScreen extends StatefulWidget {
   static final String ROUTE_NAME = 'Hadeeth_details';
@@ -39,12 +40,12 @@ class _HadeethDetailsScreenState extends State<HadeethDetailsScreen> {
                     width: 50,
                     child: MaterialButton(
                       onPressed: () {
-                        /*
+
                           Navigator.push(context, MaterialPageRoute(builder: (context){
-                            return QuranScreen();
+                            return MyHomePage(currentIndex: 2,);
                           }));
 
-                         */
+
                       },
                       child: Icon(Icons.arrow_back_outlined),
                     ),

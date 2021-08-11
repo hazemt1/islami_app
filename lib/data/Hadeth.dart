@@ -5,7 +5,7 @@ void loadHadethFile(AllHadeth allHadeth,Function _setState)async{
   List<Hadeth> list= [];
   String fileContent = await rootBundle.loadString('assets/content/ahadeth.txt');
   List<String> allHadethConent = fileContent.split('#\r\n');
-  print(allHadethConent.length);
+  // print(allHadethConent.length);
   for(int i=0;i<allHadethConent.length;i++){
     String hadethContent = allHadethConent[i];
     List<String> hadethLines = hadethContent.split('\n');
