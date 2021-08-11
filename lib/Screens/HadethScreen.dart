@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:islamic_app/data/Hadeth.dart';
-import 'package:islamic_app/supScreens/HadethDetailsScreen.dart';
+import 'package:islami_app/data/Hadeth.dart';
+import 'package:islami_app/supScreens/HadethDetailsScreen.dart';
 
 
 class HadethScreen extends StatefulWidget {

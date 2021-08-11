@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:islamic_app/Screens/MyHomePage.dart';
+import 'package:islami_app/Screens/MyHomePage.dart';
 
 import '../data/Hadeth.dart';
 

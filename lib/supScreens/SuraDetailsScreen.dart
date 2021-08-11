@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:islamic_app/Screens/MyHomePage.dart';
+import 'package:islami_app/Screens/MyHomePage.dart';
 
 
 class SuraDetailsScreen extends StatefulWidget {

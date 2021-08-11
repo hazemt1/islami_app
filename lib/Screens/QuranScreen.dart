@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:islamic_app/data/QuranData.dart';
-import 'package:islamic_app/supScreens/SuraDetailsScreen.dart';
+import 'package:islami_app/data/QuranData.dart';
+import 'package:islami_app/supScreens/SuraDetailsScreen.dart';
 
 
 

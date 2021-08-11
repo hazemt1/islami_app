@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 class Tasbeeh extends StatefulWidget {
 
@@ -16,7 +17,7 @@ class _TasbeehState extends State<Tasbeeh> {
   int prayerPosition = 0;
 
   List<String> prayers = [
-    'سُبْحَانَ اللَّهِِ',
+    'سبحان الله',
     'الحمدلله',
     'الله اكبر',
     'لا اله الا الله'
@@ -29,13 +30,15 @@ class _TasbeehState extends State<Tasbeeh> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SizedBox(height: 20,),
-          Text('اسلامي', style: TextStyle(
-            fontSize: 35,
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
-            decoration: TextDecoration.none,
-          ),
+          Container(
+            margin: EdgeInsets.only(top: 10,),
+            child: Text(
+              'إسلامي',
+              style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold
+              ),
+            ),
           ),
           Stack(
               children: [
@@ -58,7 +61,7 @@ class _TasbeehState extends State<Tasbeeh> {
               ]
           ),
 
-          SizedBox(height: 20,),
+          SizedBox(height: 10,),
           Text('عدد التسبيحات', style: TextStyle(
             fontSize: 30,
             color: Colors.black,
@@ -66,12 +69,12 @@ class _TasbeehState extends State<Tasbeeh> {
             height: .5,
             decoration: TextDecoration.none,
           ),),
-          SizedBox(height: 20,),
+          SizedBox(height: 10,),
           Container(
-            padding: EdgeInsets.all(20),
+            padding: EdgeInsets.all(15),
             decoration: BoxDecoration(
                 borderRadius: BorderRadiusDirectional.circular(30),
-                color: Colors.amberAccent.withOpacity(.5)
+                color: HexColor('#B7935F').withOpacity(0.57),
             ),
             child: Text(tasbeehCount.toString(), style: TextStyle(
               fontSize: 30,
@@ -80,12 +83,13 @@ class _TasbeehState extends State<Tasbeeh> {
               decoration: TextDecoration.none,
             ),),
           ),
-          SizedBox(height: 20,),
+          SizedBox(height: 10,),
           Container(
-            padding: EdgeInsets.all(20),
+            height: 60,
+            padding: EdgeInsets.all(10),
             decoration: BoxDecoration(
                 borderRadius: BorderRadiusDirectional.circular(25),
-                color: Colors.black12.withOpacity(.5)
+                color: HexColor('#B7935F'),
             ),
             child: Text(prayers[prayerPosition], style: TextStyle(
               fontSize: 25,
