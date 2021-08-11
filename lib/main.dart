@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:islami_app/tasbeeh.dart';
+import 'package:flutter/services.dart';
+
+import 'Screens/MyHomePage.dart';
 
 void main() {
   runApp(MyApp());
@@ -8,8 +10,18 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+    ));
     return MaterialApp(
-      home: Tasbeeh(),
+      debugShowCheckedModeBanner: false,
+      home: MyHomePage(
+        currentIndex: 3,
+      ),
+      theme: ThemeData(
+        primaryColor: Color(0xFFB7935F),
+        accentColor: Color(0xFF242424),
+      ),
     );
   }
 }
