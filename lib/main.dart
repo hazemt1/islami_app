@@ -9,8 +9,14 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
-      home: MyHomePage(title: 'Flutter Page'),
+      home: MyHomePage(),
+      theme: ThemeData(
+        primaryColor: Color(0xFFB7935F),
+        accentColor:  Color(0xFF242424),
+      ),
+
     );
   }
 }

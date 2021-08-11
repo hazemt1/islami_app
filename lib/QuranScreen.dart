@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:islami_app/QuranData.dart';
+
+import 'QuranData.dart';
+import 'suraDetails/SuraDetailsScreen.dart';
+
 class QuranScreen extends StatelessWidget {
 
   @override
@@ -95,9 +98,9 @@ Widget _buttonToSora(String soraName, int index,BuildContext context,[int number
       height: 50,
       child: MaterialButton(
         onPressed: (){
-          // Navigator.push(context, MaterialPageRoute(builder: (context){
-          //   return SuraDetailsScreen(soraName, index+1);
-          // }));
+          Navigator.push(context, MaterialPageRoute(builder: (context){
+            return SuraDetailsScreen(soraName, index+1);
+          }));
         },
         child: Text(
           numberOfAyat==-1 ? soraName : '$numberOfAyat',
