@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+
+import 'Hadeth.dart';
 
 class HadeethDetailsScreen extends StatefulWidget {
   static final String ROUTE_NAME = 'Hadeeth_details';
@@ -12,8 +13,15 @@ class HadeethDetailsScreen extends StatefulWidget {
 
 class _HadeethDetailsScreenState extends State<HadeethDetailsScreen> {
   int pos;
-  _HadeethDetailsScreenState([this.pos=0]) {
-    loadHadethFile();
+  AllHadeth hadeth=new AllHadeth();
+  _HadeethDetailsScreenState([this.pos = 0]) {
+    loadHadethFile(hadeth,_setState);
+  }
+  void _setState(Function function){
+    setState(() {
+      function();
+    });
+    // print(hadethList.length);
   }
   @override
   Widget build(BuildContext context) {
@@ -54,7 +62,10 @@ class _HadeethDetailsScreenState extends State<HadeethDetailsScreen> {
                 ],
               ),
               Container(
-                height: 590,
+                constraints: BoxConstraints(
+                  minHeight: 300,
+                  maxHeight: 500,
+                ),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     color: Colors.white.withOpacity(0.7)),
@@ -70,8 +81,8 @@ class _HadeethDetailsScreenState extends State<HadeethDetailsScreen> {
                             Container(
                               margin: EdgeInsets.only(left: 30),
                               child: Text(
-                                hadethList.length==0? '':
-                                hadethList[pos].title,
+                                hadeth.hadethList.length == 0 ? '' :
+                                hadeth.hadethList[pos].title,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     fontSize: 25,
@@ -96,54 +107,23 @@ class _HadeethDetailsScreenState extends State<HadeethDetailsScreen> {
             ],
           )),
     );
-
   }
 
   Widget getMainView() {
     return Container(
-        child: hadethList.length== 0
+        child: hadeth.hadethList.length == 0
             ? Center(child: CircularProgressIndicator())
             : Container(
-          margin: EdgeInsets.only(top: 20,left: 5,right: 5),
+          margin: EdgeInsets.only(top: 20, left: 5, right: 5),
           decoration:
           BoxDecoration(borderRadius: BorderRadius.circular(8)),
           child: Text(
-            hadethList[pos].content
+            hadeth.hadethList[pos].content
             ,
             style: TextStyle(fontSize: 20),
             textAlign: TextAlign.end,
           ),
         ));
   }
-  List<Hadeth> hadethList = [];
-
-  void loadHadethFile()async{
-    List<Hadeth> list= [];
-    String fileContent = await rootBundle.loadString('assets/content/ahadeth.txt');
-    // line splitter -- \n -- \r\n
-    List<String> allHadethConent = fileContent.split('#\n');
-    print(allHadethConent.length);
-    for(int i=0;i<allHadethConent.length;i++){
-      String hadethContent = allHadethConent[i];
-      List<String> hadethLines = hadethContent.split('\n');
-      String title = hadethLines[0];// title
-      String content = '';
-      for(int j =1;j<hadethLines.length;j++){
-        content = content+ ' '+hadethLines[j];
-      }
-      Hadeth hadeth = Hadeth(title, content);
-      list.add(hadeth);
-    }
-
-    setState(() {
-      hadethList=list;
-    });
-  }
-  }
-class Hadeth {
-  String title;
-  String content;
-
-  Hadeth(this.title, this.content);
 }
 
