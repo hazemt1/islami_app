@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:islamic_app/MyHomePage.dart';
+
+import '../QuranScreen.dart';
 
 class SuraDetailsScreen extends StatefulWidget {
   static final String ROUTE_NAME = 'sura_details';
@@ -32,12 +35,10 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
                     width: 50,
                     child: MaterialButton(
                       onPressed: () {
-                        /*
-                          Navigator.push(context, MaterialPageRoute(builder: (context){
-                            return QuranScreen();
-                          }));
-
-                         */
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return MyHomePage(currentIndex: 3);
+                        }));
                       },
                       child: Icon(Icons.arrow_back_outlined),
                     ),
@@ -55,11 +56,14 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
                 ],
               ),
               Container(
-                height: 590,
+                constraints: new BoxConstraints(
+                  minHeight: 400.0,
+                  maxHeight: 500,
+                ),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     color: Colors.white.withOpacity(0.7)),
-                margin: EdgeInsets.only(top: 50, left: 20, right: 20),
+                margin: EdgeInsets.only(top: 50, left: 20, right: 20,bottom: 20),
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
@@ -74,25 +78,26 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
                                 'سورة ' + widget.soraName,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                  fontSize: 25,
-                                  fontWeight: FontWeight.bold
-                                ),
+                                    fontSize: 25, fontWeight: FontWeight.bold),
                               ),
                             ),
                             Container(
                               width: 40,
-                              child: MaterialButton(onPressed: (){
-                                /*
-                          Navigator.push(context, MaterialPageRoute(builder: (context){
-                            return QuranScreen();
-                          }));
-
-                         */
-                              },
-                                child: Icon(CupertinoIcons.arrowtriangle_right_circle_fill,color: Colors.black,),
+                              child: MaterialButton(
+                                onPressed: () {
+                                  Navigator.push(context,
+                                      MaterialPageRoute(builder: (context) {
+                                    return MyHomePage(currentIndex: 3);
+                                  }));
+                                },
+                                child: Icon(
+                                  CupertinoIcons
+                                      .arrowtriangle_right_circle_fill,
+                                  color: Colors.black,
+                                ),
                               ),
                             )
-                            //Icon(Icons)
+
                           ],
                         ),
                         decoration: BoxDecoration(
@@ -109,7 +114,6 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
             ],
           )),
     );
-
   }
 
   Widget getMainView() {
@@ -117,7 +121,7 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
         child: Sora.length == 0
             ? Center(child: CircularProgressIndicator())
             : Container(
-                margin: EdgeInsets.only(top: 20,left: 5,right: 5),
+                margin: EdgeInsets.only(top: 20, left: 5, right: 5),
                 decoration:
                     BoxDecoration(borderRadius: BorderRadius.circular(8)),
                 child: Text(

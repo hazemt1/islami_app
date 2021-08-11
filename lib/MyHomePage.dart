@@ -1,21 +1,23 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hexcolor/hexcolor.dart';
-import 'package:islami_app/QuranScreen.dart';
 
+
+
+import 'QuranScreen.dart';
 import 'TEMP.dart';
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
+  MyHomePage({Key? key, currentIndex}) : super(key: key);
 
-  final String title;
+  final int currentIndex=3 ;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _MyHomePageState createState() => _MyHomePageState(currentIndex);
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _currentIndex = 3;
+  _MyHomePageState(this._currentIndex);
+  int _currentIndex ;
   final List<Widget> _children = [
     // Here the widgets should be open when the icons are clicked
     PlaceholderWidget(Colors.white),
@@ -36,13 +38,13 @@ class _MyHomePageState extends State<MyHomePage> {
       home: Scaffold(
         body: _children[_currentIndex],
         bottomNavigationBar: Container(
-
           decoration: BoxDecoration(
-
-            color: HexColor('#B7935F')
+            image: DecorationImage(
+              image: AssetImage('assets/images/Rectangle.png'),
+              fit: BoxFit.fill
+            )
           ),
           child: BottomNavigationBar(
-
             onTap: onTabTapped,
             currentIndex: _currentIndex,
             type: BottomNavigationBarType.fixed,
