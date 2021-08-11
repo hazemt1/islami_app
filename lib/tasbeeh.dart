@@ -24,86 +24,83 @@ class _TasbeehState extends State<Tasbeeh> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Tasbeeh Page',
-      home: Container(
-        margin: EdgeInsets.zero,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage('assets/images/bg3.png'),
-              fit: BoxFit.fill
+    return Scaffold(
+      backgroundColor: Colors.transparent,
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          SizedBox(height: 20,),
+          Text('اسلامي', style: TextStyle(
+            fontSize: 35,
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+            decoration: TextDecoration.none,
           ),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SizedBox(height: 20,),
-            Text('اسلامي', style: TextStyle(
-              fontSize: 35,
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
-              decoration: TextDecoration.none,
-            ),),
-
-            Stack(
-                children: [
-                  Container(
-                    alignment: AlignmentDirectional.topCenter,
-                    child: Image.asset('assets/images/head of seb7a.png'),),
-                  Container(
-                    padding: EdgeInsets.fromLTRB(0, 67, 0, 0),
-                    alignment: AlignmentDirectional.center,
-                    child: TextButton(
-                        onPressed: clicked,
-                        child: Image.asset(
-                            'assets/images/body of seb7a.png')
-                    ),
+          ),
+          Stack(
+              children: [
+                Container(
+                  alignment: AlignmentDirectional.topCenter,
+                  child: Image.asset('assets/images/head of seb7a.png'),),
+                AnimatedContainer(
+                  padding: EdgeInsets.fromLTRB(0, 67, 0, 0),
+                  // transform: Matrix4.rotationX(10),
+                  alignment: AlignmentDirectional.center,
+                  duration: Duration(seconds: 1),
+                  child: TextButton(
+                      onPressed: () {
+                        clicked();
+                      },
+                      child: Image.asset(
+                          'assets/images/body of seb7a.png')
                   ),
-                ]
+                ),
+              ]
+          ),
+
+          SizedBox(height: 20,),
+          Text('عدد التسبيحات', style: TextStyle(
+            fontSize: 30,
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+            height: .5,
+            decoration: TextDecoration.none,
+          ),),
+          SizedBox(height: 20,),
+          Container(
+            padding: EdgeInsets.all(20),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadiusDirectional.circular(30),
+                color: Colors.amberAccent.withOpacity(.5)
             ),
-            SizedBox(height: 20,),
-            Text('عدد التسبيحات', style: TextStyle(
+            child: Text(tasbeehCount.toString(), style: TextStyle(
               fontSize: 30,
               color: Colors.black,
               fontWeight: FontWeight.bold,
-              height: .5,
               decoration: TextDecoration.none,
             ),),
-            SizedBox(height: 20,),
-            Container(
-              padding: EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadiusDirectional.circular(30),
-                  color: Colors.amberAccent.withOpacity(.5)
-              ),
-              child: Text(tasbeehCount.toString(), style: TextStyle(
-                fontSize: 30,
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-                decoration: TextDecoration.none,
-              ),),
+          ),
+          SizedBox(height: 20,),
+          Container(
+            padding: EdgeInsets.all(20),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadiusDirectional.circular(25),
+                color: Colors.black12.withOpacity(.5)
             ),
-            SizedBox(height: 20,),
-            Container(
-              padding: EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadiusDirectional.circular(25),
-                  color: Colors.black12.withOpacity(.5)
-              ),
-              child: Text(prayers[prayerPosition], style: TextStyle(
-                fontSize: 25,
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                decoration: TextDecoration.none,
-              ),),
-            )
-          ],
-        ),
+            child: Text(prayers[prayerPosition], style: TextStyle(
+              fontSize: 25,
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              decoration: TextDecoration.none,
+            ),),
+          )
+        ],
       ),
     );
   }
 
   void clicked() {
+    
     setState(() {
       tasbeehCount++;
       if (prayerPosition == prayers.length - 1) {
