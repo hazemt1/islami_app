@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:islami_app/HadethDetailsScreen.dart';
+
+import 'MyHomePage.dart';
 
 void main() {
   runApp(MyApp());
@@ -10,7 +11,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: HadeethDetailsScreen(5),
+      home: MyHomePage(),
+      theme: ThemeData(
+        primaryColor: Color(0xFFB7935F),
+        accentColor:  Color(0xFF242424),
+      ),
+
     );
   }
 }
