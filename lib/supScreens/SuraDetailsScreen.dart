@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:islamic_app/MyHomePage.dart';
+import 'package:islamic_app/Screens/MyHomePage.dart';
 
-import '../QuranScreen.dart';
 
 class SuraDetailsScreen extends StatefulWidget {
   static final String ROUTE_NAME = 'sura_details';
@@ -37,7 +36,7 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
                       onPressed: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) {
-                          return MyHomePage(currentIndex: 3);
+                          return MyHomePage(currentIndex: 3,);
                         }));
                       },
                       child: Icon(Icons.arrow_back_outlined),
@@ -87,7 +86,7 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
                                 onPressed: () {
                                   Navigator.push(context,
                                       MaterialPageRoute(builder: (context) {
-                                    return MyHomePage(currentIndex: 3);
+                                    return MyHomePage(currentIndex: 3,);
                                   }));
                                 },
                                 child: Icon(

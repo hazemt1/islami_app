@@ -1,15 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:islamic_app/Screens/QuranScreen.dart';
+import 'HadethScreen.dart';
 
+import '../data/TEMP.dart';
 
-
-import 'QuranScreen.dart';
-import 'TEMP.dart';
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, currentIndex}) : super(key: key);
+  MyHomePage({Key? key, @required this.currentIndex=3}) : super(key: key);
 
-  final int currentIndex=3 ;
+  int currentIndex ;
 
   @override
   _MyHomePageState createState() => _MyHomePageState(currentIndex);
@@ -22,7 +22,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // Here the widgets should be open when the icons are clicked
     PlaceholderWidget(Colors.white),
     PlaceholderWidget(Colors.deepOrange),
-    PlaceholderWidget(Colors.green),
+    HadethScreen(),
     QuranScreen()
   ];
 
@@ -34,9 +34,16 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body: _children[_currentIndex],
+    return  Scaffold(
+        body: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/images/default_bg.png'),
+              fit: BoxFit.fill,
+            ),
+          ),
+            child: _children[_currentIndex]
+        ),
         bottomNavigationBar: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
@@ -67,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ],
           ),
         ),
-      ),
+
     );
   }
 }
