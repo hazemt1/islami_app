@@ -22,7 +22,6 @@ class _HadeethDetailsScreenState extends State<HadeethDetailsScreen> {
     setState(() {
       function();
     });
-    // print(hadethList.length);
   }
   @override
   Widget build(BuildContext context) {
@@ -119,10 +118,10 @@ class _HadeethDetailsScreenState extends State<HadeethDetailsScreen> {
           decoration:
           BoxDecoration(borderRadius: BorderRadius.circular(8)),
           child: Text(
-            hadeth.hadethList[pos].content
-            ,
+            hadeth.hadethList[pos].content,
+            textDirection: TextDirection.rtl,
             style: TextStyle(fontSize: 20),
-            textAlign: TextAlign.end,
+            textAlign: TextAlign.start,
           ),
         ));
   }
