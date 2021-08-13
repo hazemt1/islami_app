@@ -61,46 +61,44 @@ class _HadeethDetailsScreenState extends State<HadeethDetailsScreen> {
                   )
                 ],
               ),
-              Container(
-                constraints: BoxConstraints(
-                  minHeight: 300,
-                  maxHeight: 500,
-                ),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Colors.white.withOpacity(0.7)),
-                margin: EdgeInsets.only(top: 50, left: 20, right: 20),
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      Container(
-                        width: 220,
-                        margin: EdgeInsets.all(20),
-                        child: Row(
-                          children: <Widget>[
-                            Container(
-                              margin: EdgeInsets.only(left: 30),
-                              child: Text(
-                                hadeth.hadethList.length == 0 ? '' :
-                                hadeth.hadethList[pos].title,
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontSize: 25,
-                                    fontWeight: FontWeight.bold
+              Expanded(
+                child: Container(
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.white.withOpacity(0.7)),
+                  margin: EdgeInsets.only(top: 50, left: 20, right: 20),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        Container(
+                          width: 220,
+                          margin: EdgeInsets.all(20),
+                          child: Row(
+                            children: <Widget>[
+                              Container(
+                                margin: EdgeInsets.only(left: 30),
+                                child: Text(
+                                  hadeth.hadethList.length == 0 ? '' :
+                                  hadeth.hadethList[pos].title,
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize: 25,
+                                      fontWeight: FontWeight.bold
+                                  ),
                                 ),
                               ),
-                            ),
-                            //Icon(Icons)
-                          ],
+                              //Icon(Icons)
+                            ],
+                          ),
+                          decoration: BoxDecoration(
+                              border: Border(
+                                bottom:
+                                BorderSide(color: Color(0xFFB7935F), width: 1),
+                              )),
                         ),
-                        decoration: BoxDecoration(
-                            border: Border(
-                              bottom:
-                              BorderSide(color: Color(0xFFB7935F), width: 1),
-                            )),
-                      ),
-                      getMainView(),
-                    ],
+                        getMainView(),
+                      ],
+                    ),
                   ),
                 ),
               )

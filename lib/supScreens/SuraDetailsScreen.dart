@@ -65,7 +65,7 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
                     child: Column(
                       children: [
                         Container(
-                          width: 220,
+                          width: 250,
                           margin: EdgeInsets.all(20),
                           child: Row(
                             children: <Widget>[
