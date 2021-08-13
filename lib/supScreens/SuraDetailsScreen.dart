@@ -54,59 +54,58 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
                   )
                 ],
               ),
-              Container(
-                constraints: new BoxConstraints(
-                  minHeight: 400.0,
-                  maxHeight: 500,
-                ),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Colors.white.withOpacity(0.7)),
-                margin: EdgeInsets.only(top: 50, left: 20, right: 20,bottom: 20),
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      Container(
-                        width: 220,
-                        margin: EdgeInsets.all(20),
-                        child: Row(
-                          children: <Widget>[
-                            Container(
-                              margin: EdgeInsets.only(left: 30),
-                              child: Text(
-                                'سورة ' + widget.soraName,
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontSize: 25, fontWeight: FontWeight.bold),
-                              ),
-                            ),
-                            Container(
-                              width: 40,
-                              child: MaterialButton(
-                                onPressed: () {
-                                  Navigator.push(context,
-                                      MaterialPageRoute(builder: (context) {
-                                    return MyHomePage(currentIndex: 3,);
-                                  }));
-                                },
-                                child: Icon(
-                                  CupertinoIcons
-                                      .arrowtriangle_right_circle_fill,
-                                  color: Colors.black,
+              Expanded(
+                child: Container(
+
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.white.withOpacity(0.7)),
+                  margin: EdgeInsets.only(top: 50, left: 20, right: 20,bottom: 20),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        Container(
+                          width: 250,
+                          margin: EdgeInsets.all(20),
+                          child: Row(
+                            children: <Widget>[
+                              Container(
+                                margin: EdgeInsets.only(left: 30),
+                                child: Text(
+                                  'سورة ' + widget.soraName,
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize: 25, fontWeight: FontWeight.bold),
                                 ),
                               ),
-                            )
+                              Container(
+                                width: 40,
+                                child: MaterialButton(
+                                  onPressed: () {
+                                    Navigator.push(context,
+                                        MaterialPageRoute(builder: (context) {
+                                      return MyHomePage(currentIndex: 3,);
+                                    }));
+                                  },
+                                  child: Icon(
+                                    CupertinoIcons
+                                        .arrowtriangle_right_circle_fill,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              )
 
-                          ],
+                            ],
+                          ),
+                          decoration: BoxDecoration(
+                              border: Border(
+                            bottom:
+                                BorderSide(color: Color(0xFFB7935F), width: 1),
+                          )),
                         ),
-                        decoration: BoxDecoration(
-                            border: Border(
-                          bottom:
-                              BorderSide(color: Color(0xFFB7935F), width: 1),
-                        )),
-                      ),
-                      getMainView(),
-                    ],
+                        getMainView(),
+                      ],
+                    ),
                   ),
                 ),
               )
@@ -125,15 +124,15 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
                     BoxDecoration(borderRadius: BorderRadius.circular(8)),
                 child: Text(
                   Sora,
+                  textDirection: TextDirection.rtl,
                   style: TextStyle(fontSize: 20),
-                  textAlign: TextAlign.end,
+                  textAlign: TextAlign.start,
                 ),
               ));
   }
 
   String Sora = '';
   void readSuraContent(String fileName) async {
-    // Future => async programming
     String fileContent = await rootBundle.loadString(fileName);
     List<String> lines = fileContent.split('\n');
     setState(() {
@@ -141,6 +140,5 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
         Sora += lines[i] + '(${i + 1})';
       }
     });
-    print(lines.length);
   }
 }

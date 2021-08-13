@@ -13,6 +13,7 @@ class Tasbeeh extends StatefulWidget {
 class _TasbeehState extends State<Tasbeeh> {
 
   int tasbeehCount = 0;
+  double _myAngle =0;
 
   int prayerPosition = 0;
 
@@ -28,6 +29,7 @@ class _TasbeehState extends State<Tasbeeh> {
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
@@ -41,21 +43,21 @@ class _TasbeehState extends State<Tasbeeh> {
             ),
           ),
           Stack(
+
               children: [
                 Container(
+                  padding: EdgeInsets.fromLTRB(40, 0, 0, 0),
                   alignment: AlignmentDirectional.topCenter,
                   child: Image.asset('assets/images/head of seb7a.png'),),
-                AnimatedContainer(
-                  padding: EdgeInsets.fromLTRB(0, 67, 0, 0),
-                  // transform: Matrix4.rotationX(10),
-                  alignment: AlignmentDirectional.center,
-                  duration: Duration(seconds: 1),
-                  child: TextButton(
-                      onPressed: () {
-                        clicked();
-                      },
-                      child: Image.asset(
-                          'assets/images/body of seb7a.png')
+                Center(
+                  child: MaterialButton(
+                    padding: EdgeInsets.fromLTRB(0, 79, 0, 0),
+
+                    onPressed: (){clicked();},
+                    child: Transform.rotate(
+                      angle: _myAngle,
+                      child: Image.asset('assets/images/body of seb7a.png'),
+                    ),
                   ),
                 ),
               ]
@@ -73,8 +75,8 @@ class _TasbeehState extends State<Tasbeeh> {
           Container(
             padding: EdgeInsets.all(15),
             decoration: BoxDecoration(
-                borderRadius: BorderRadiusDirectional.circular(30),
-                color: HexColor('#B7935F').withOpacity(0.57),
+              borderRadius: BorderRadiusDirectional.circular(30),
+              color: HexColor('#B7935F').withOpacity(0.57),
             ),
             child: Text(tasbeehCount.toString(), style: TextStyle(
               fontSize: 30,
@@ -87,9 +89,10 @@ class _TasbeehState extends State<Tasbeeh> {
           Container(
             height: 60,
             padding: EdgeInsets.all(10),
+            margin: EdgeInsets.all(10),
             decoration: BoxDecoration(
-                borderRadius: BorderRadiusDirectional.circular(25),
-                color: HexColor('#B7935F'),
+              borderRadius: BorderRadiusDirectional.circular(25),
+              color: HexColor('#B7935F'),
             ),
             child: Text(prayers[prayerPosition], style: TextStyle(
               fontSize: 25,
@@ -102,9 +105,17 @@ class _TasbeehState extends State<Tasbeeh> {
       ),
     );
   }
+  rotate() async {
+    for (var i = 0; i < 2; i++)
+      await Future.delayed(Duration(milliseconds: 25), () {
+        setState(() {
+          _myAngle += 0.1;
+        });
+      });
+  }
 
   void clicked() {
-    
+    rotate();
     setState(() {
       tasbeehCount++;
       if (prayerPosition == prayers.length - 1) {
