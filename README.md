@@ -2,37 +2,30 @@
 
 
 # Mobile Application Main Features:
-
 Feature | Description
 --------|-------------
-تسبيح  | 
-قران   | 
+تسبيح  | feature that rotate sebha and counts till 33 and then change the text shown 
+قران   | represeting the feature of Reading The Quran by scrollable list that contain all the suras with it's size to choose which one you want to reading, by clicking on sura's name or sura's size , another screen will be appear to you with sura name and scrollable text that contain all of it so you can read it 
 Radio  |
-احاديث|
-----------------------
+احاديث| representing the feature of Reading ahadeth speech by scrollable list that contain 50 speech by clicking on it the rollable text that contain all of it so you can read it
+Splash Screen |an intro for any flutter application and it's customized to be appropiate to islami application
+
+
+# Libraries
+* Services  
+  * Used for loading and converting the file into string so can be used at the application 
 
 
 # Some ScreenShoots of the app
-![2021-08-15 (13)](https://user-images.githubusercontent.com/57330162/129479291-b04f1dd8-e0b0-41d4-b68d-0d58714a0c8f.png) 
-![2021-08-15 (11)](https://user-images.githubusercontent.com/57330162/129479298-82235f74-dfd4-44cb-be57-c203dff07c6e.png)
-![2021-08-15 (5)](https://user-images.githubusercontent.com/57330162/129479344-8be7b8c8-9382-47a2-9cbf-a3081bdd69ca.png)
-![2021-08-15 (12)](https://user-images.githubusercontent.com/57330162/129479351-69a21935-1a3d-4d88-931f-63c2055b79b9.png)
-![2021-08-15 (9)](https://user-images.githubusercontent.com/57330162/129479359-1124180c-4178-4fd2-bfb1-6d63425012a8.png)
+![WhatsApp Image 2021-08-15 at 2 57 05 PM](https://user-images.githubusercontent.com/57330162/129481224-774c7764-9695-4e36-b97b-cb4dd28b26e8.jpeg)
+![WhatsApp Image 2021-08-15 at 2 57 04 PM (1)](https://user-images.githubusercontent.com/57330162/129481228-dcadfeed-57f6-4442-99f9-de41ef05f5f8.jpeg)
+![WhatsApp Image 2021-08-15 at 2 57 04 PM](https://user-images.githubusercontent.com/57330162/129481233-fabfed59-29af-448e-a483-1ba3b10b4d5a.jpeg)
+![Group 8@3x](https://user-images.githubusercontent.com/57330162/129481239-4b551a1b-743b-48d3-9ebd-23bfaf58cba8.png)
 
-# Getting Started
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
-
+-----
 # Prerequisites
 * [AndriodStudio](https://developer.android.com/studio) - The IDE used.
 * [Flutter SDK](https://flutter.dev/)
-
-# Installing
-A step by step series of examples that tell you how to get a development env running
-
-* clone this repo to android studio
-* run the chatbot model to get API link
-* add the API link here
-* run the app in android studio.
 
 # Some hints 
 A few resources to get you started if this is your first Flutter project:
