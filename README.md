@@ -6,7 +6,6 @@ Feature | Description
 --------|-------------
 تسبيح  | feature that rotate sebha and counts till 33 and then change the text shown 
 قران   | represeting the feature of Reading The Quran by scrollable list that contain all the suras with it's size to choose which one you want to reading, by clicking on sura's name or sura's size , another screen will be appear to you with sura name and scrollable text that contain all of it so you can read it 
-Radio  |
 احاديث| representing the feature of Reading ahadeth speech by scrollable list that contain 50 speech by clicking on it the rollable text that contain all of it so you can read it
 Splash Screen |an intro for any flutter application and it's customized to be appropiate to islami application
 
