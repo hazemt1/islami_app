@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:islami_app/Screens/QuranScreen.dart';
+import 'package:islami_app/Screens/RadioScreen.dart';
 import 'package:islami_app/Screens/tasbeeh.dart';
 import 'HadethScreen.dart';
 
@@ -23,7 +24,7 @@ class _MyHomePageState extends State<MyHomePage> {
   int _currentIndex ;
   final List<Widget> _children = [
     // Here the widgets should be open when the icons are clicked
-    PlaceholderWidget(Colors.white),
+    RadioScreen(),
     Tasbeeh(),
     HadethScreen(),
     QuranScreen()
