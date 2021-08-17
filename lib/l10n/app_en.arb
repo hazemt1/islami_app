@@ -11,7 +11,7 @@
   "language": "Language",
   "settings": "settings",
   "radioQuran": "Holy Quran Radio",
-  "theme" : "theme",
+  "themeDark" : "Dark theme",
   "dark" : "dark",
   "light" : "light"
 }

@@ -11,7 +11,7 @@
   "language":"اللغة",
   "settings": "الإعدادات",
   "radioQuran": "إذاعة القرآن الكريم",
-  "theme" : "مظهر",
+  "themeDark" : "مظهر داكن",
   "dark" : "داكن",
   "light" : "فاتح"
 

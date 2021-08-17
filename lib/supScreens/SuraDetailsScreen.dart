@@ -44,7 +44,7 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
                       onPressed: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) {
-                              return MyHomePage(currentIndex: 3,);
+                              return MyHomePage(currentIndex: 4,);
                             }));
                       },
                       child: Icon(Icons.arrow_back_outlined),
@@ -100,7 +100,7 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
                                   onPressed: () {
                                     Navigator.push(context,
                                         MaterialPageRoute(builder: (context) {
-                                          return MyHomePage(currentIndex: 3,);
+                                          return MyHomePage(currentIndex: 4,);
                                         }));
                                   },
                                   child: Icon(

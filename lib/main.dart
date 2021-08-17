@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         locale: Locale.fromSubtags(languageCode: UserPreferences.getLanguage()),
         home: MyHomePage(
-          currentIndex: 3,
+          currentIndex: 4,
         ),
       );
      },
