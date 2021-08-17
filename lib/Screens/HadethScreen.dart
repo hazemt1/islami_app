@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:islami_app/data/Hadeth.dart';
 import 'package:islami_app/supScreens/HadethDetailsScreen.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HadethScreen extends StatefulWidget {
   @override
@@ -32,7 +32,7 @@ class _HadethScreenState extends State<HadethScreen> {
               Container(
                 margin: EdgeInsets.only(top: 10),
                 child: Text(
-                  'إسلامي',
+                  AppLocalizations.of(context)!.title,
                   style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                 ),
               ),
@@ -50,7 +50,7 @@ class _HadethScreenState extends State<HadethScreen> {
                   children: [
                     Expanded(
                       child: Text(
-                        'الأحاديث',
+                        AppLocalizations.of(context)!.hadith,
                         style: TextStyle(fontSize: 25),
                         textAlign: TextAlign.center,
                       ),
@@ -85,7 +85,7 @@ Widget _buttonToSora(String hadethName, int index, BuildContext context) {
           }));
         },
         child: Text(
-          'الحديث رقم ${index+1}',
+          '${AppLocalizations.of(context)!.hadethNo} ${index+1}',
           style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
           textAlign: TextAlign.center,
         ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:islami_app/data/QuranData.dart';
 import 'package:islami_app/supScreens/SuraDetailsScreen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
 
@@ -19,7 +20,7 @@ class QuranScreen extends StatelessWidget {
               Container(
                 margin: EdgeInsets.only(top: 10,),
                 child: Text(
-                    'إسلامي',
+                  AppLocalizations.of(context)!.title,
                   style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold
@@ -32,14 +33,14 @@ class QuranScreen extends StatelessWidget {
                 child: Row(
                   children: [
                     _gridTile(Text(
-                      'عدد الآيات',
+                      AppLocalizations.of(context)!.noOfVerses,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 25
                       ),
                     )),
                     _gridTile(Text(
-                      'اسم السورة',
+                      AppLocalizations.of(context)!.surahName,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontSize: 25

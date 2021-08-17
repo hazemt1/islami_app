@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:islami_app/data/AppConfigProvider.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'Screens/MyHomePage.dart';
+import 'data/UserPreferences.dart';
 
-void main() {
+Future main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await UserPreferences.init();
   runApp(MyApp());
 }
 
@@ -13,15 +19,25 @@ class MyApp extends StatelessWidget {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
     ));
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: MyHomePage(
-        currentIndex: 3,
-      ),
-      theme: ThemeData(
-        primaryColor: Color(0xFFB7935F),
-        accentColor: Color(0xFF242424),
-      ),
+    return ChangeNotifierProvider(create: (context)=> AppConfigProvider(),
+     builder: (context ,widget){
+      final provider =Provider.of<AppConfigProvider>(context);
+      return MaterialApp(
+        localizationsDelegates: [
+          AppLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: AppLocalizations.supportedLocales,
+        debugShowCheckedModeBanner: false,
+        locale: Locale.fromSubtags(languageCode: UserPreferences.getLanguage()),
+        home: MyHomePage(
+          currentIndex: 3,
+        ),
+      );
+     },
     );
+
   }
 }

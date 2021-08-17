@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:islami_app/Screens/MyHomePage.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
 class SuraDetailsScreen extends StatefulWidget {
@@ -46,8 +47,8 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
                     child: Padding(
                       padding: const EdgeInsets.only(right: 50.0),
                       child: Text(
-                        'إسلامي',
-                        style: TextStyle(fontSize: 30, color: Colors.black),
+                        AppLocalizations.of(context)!.title,
+                        style: TextStyle(fontSize: 30, color: Colors.black,fontWeight: FontWeight.bold),
                         textAlign: TextAlign.center,
                       ),
                     ),
@@ -65,12 +66,13 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
                     child: Column(
                       children: [
                         Container(
-                          width: 250,
+                          // padding: EdgeInsets.symmetric(horizontal: 10),
                           margin: EdgeInsets.all(20),
                           child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               Container(
-                                margin: EdgeInsets.only(left: 30),
+                                // margin: EdgeInsets.only(left: 30),
                                 child: Text(
                                   'سورة ' + widget.soraName,
                                   textAlign: TextAlign.center,
@@ -78,8 +80,9 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
                                       fontSize: 25, fontWeight: FontWeight.bold),
                                 ),
                               ),
+
                               Container(
-                                width: 40,
+                                // width: 40,
                                 child: MaterialButton(
                                   onPressed: () {
                                     Navigator.push(context,

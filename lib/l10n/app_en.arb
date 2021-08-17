@@ -1,0 +1,17 @@
+{
+  "title": "Islami",
+  "surahName" : "Surah Name",
+  "noOfVerses" : "No of Verses",
+  "quran": "Quran",
+  "hadith": "Hadiths",
+  "tasabeh": "Praises",
+  "radio": "Radio",
+  "hadethNo": "Hadith No",
+  "noOfTasabeh": "No of praises",
+  "language": "Language",
+  "settings": "settings",
+  "radioQuran": "Holy Quran Radio",
+  "theme" : "theme",
+  "dark" : "dark",
+  "light" : "light"
+}
