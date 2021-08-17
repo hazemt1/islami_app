@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:islami_app/Screens/MyHomePage.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:islami_app/data/AppConfigProvider.dart';
+import 'package:provider/provider.dart';
 
 import '../data/Hadeth.dart';
 
@@ -23,13 +27,15 @@ class _HadeethDetailsScreenState extends State<HadeethDetailsScreen> {
       function();
     });
   }
+  late AppConfigProvider provider;
   @override
   Widget build(BuildContext context) {
+    provider = Provider.of<AppConfigProvider>(context);
     return Scaffold(
       body: Container(
           decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('assets/images/default_bg.png'),
+                  image: AssetImage((provider.isDarkModeEnabled())?'assets/images/bg.png':'assets/images/default_bg.png'),
                   fit: BoxFit.fill)),
           child: Column(
             children: [
@@ -41,7 +47,7 @@ class _HadeethDetailsScreenState extends State<HadeethDetailsScreen> {
                       onPressed: () {
 
                           Navigator.push(context, MaterialPageRoute(builder: (context){
-                            return MyHomePage(currentIndex: 2,);
+                            return MyHomePage(currentIndex: 3,);
                           }));
 
 
@@ -53,8 +59,11 @@ class _HadeethDetailsScreenState extends State<HadeethDetailsScreen> {
                     child: Padding(
                       padding: const EdgeInsets.only(right: 50.0),
                       child: Text(
-                        'إسلامي',
-                        style: TextStyle(fontSize: 30, color: Colors.black),
+                        AppLocalizations.of(context)!.title,
+                        style: Theme
+                            .of(context)
+                            .textTheme
+                            .headline3,
                         textAlign: TextAlign.center,
                       ),
                     ),
@@ -65,30 +74,23 @@ class _HadeethDetailsScreenState extends State<HadeethDetailsScreen> {
                 child: Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
-                      color: Colors.white.withOpacity(0.7)),
+                    color: HexColor(provider.isDarkModeEnabled()?'#141A2E':'#FFFFFF').withOpacity(0.80)
+                  ),
                   margin: EdgeInsets.only(top: 50, left: 20, right: 20),
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
                         Container(
-                          width: 220,
+                          padding: EdgeInsets.symmetric(horizontal: 10),
                           margin: EdgeInsets.all(20),
-                          child: Row(
-                            children: <Widget>[
-                              Container(
-                                margin: EdgeInsets.only(left: 30),
-                                child: Text(
-                                  hadeth.hadethList.length == 0 ? '' :
-                                  hadeth.hadethList[pos].title,
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      fontSize: 25,
-                                      fontWeight: FontWeight.bold
-                                  ),
-                                ),
-                              ),
-                              //Icon(Icons)
-                            ],
+                          child: Container(
+                            // margin: EdgeInsets.only(left: 30),
+                            child: Text(
+                              hadeth.hadethList.length == 0 ? '' :
+                              hadeth.hadethList[pos].title,
+                              textAlign: TextAlign.center,
+                              style: Theme.of(context).textTheme.bodyText1,
+                            ),
                           ),
                           decoration: BoxDecoration(
                               border: Border(
@@ -108,6 +110,7 @@ class _HadeethDetailsScreenState extends State<HadeethDetailsScreen> {
   }
 
   Widget getMainView() {
+    AppConfigProvider provider = Provider.of<AppConfigProvider>(context);
     return Container(
         child: hadeth.hadethList.length == 0
             ? Center(child: CircularProgressIndicator())
@@ -118,7 +121,9 @@ class _HadeethDetailsScreenState extends State<HadeethDetailsScreen> {
           child: Text(
             hadeth.hadethList[pos].content,
             textDirection: TextDirection.rtl,
-            style: TextStyle(fontSize: 20),
+            style: TextStyle(fontSize: 20,
+            color: provider.isDarkModeEnabled()?Colors.white:Colors.black
+            ),
             textAlign: TextAlign.start,
           ),
         ));

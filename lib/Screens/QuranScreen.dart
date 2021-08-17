@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+
+import 'package:islami_app/data/AppConfigProvider.dart';
 import 'package:islami_app/data/QuranData.dart';
 import 'package:islami_app/supScreens/SuraDetailsScreen.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
 
 
 class QuranScreen extends StatelessWidget {
 
+  late AppConfigProvider provider;
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: SingleChildScrollView(
@@ -19,11 +26,11 @@ class QuranScreen extends StatelessWidget {
               Container(
                 margin: EdgeInsets.only(top: 10,),
                 child: Text(
-                    'إسلامي',
-                  style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold
-                  ),
+                  AppLocalizations.of(context)!.title,
+                    style: Theme
+                        .of(context)
+                        .textTheme
+                        .headline3
                 ),
               ),
               Image(image: AssetImage('assets/images/quranImage.png')),
@@ -31,43 +38,48 @@ class QuranScreen extends StatelessWidget {
                 margin: EdgeInsets.only(top: 20),
                 child: Row(
                   children: [
+                    _gridTile(
+                        Text(
+                          AppLocalizations.of(context)!.noOfVerses,
+                          textAlign: TextAlign.center,
+                          style: Theme.of(context).textTheme.bodyText1
+                        ),
+                        context
+                    ),
                     _gridTile(Text(
-                      'عدد الآيات',
+                      AppLocalizations.of(context)!.surahName,
                       textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 25
-                      ),
-                    )),
-                    _gridTile(Text(
-                      'اسم السورة',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontSize: 25
-                      ),
-                    )),
+                      style: Theme.of(context).textTheme.bodyText1
+                    ),
+                        context
+                    ),
                   ],
                 ),
               ),
               Row(
                 children: [
                   _gridTile(
-                    ListView.builder(
-                        physics: NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemCount: QuranData.numberOfAyat.length,
-                        itemBuilder: (context, int index) {
-                          return _buttonToSora(QuranData.sour[index], index, context,QuranData.numberOfAyat[index]);
-                        }),
+                      ListView.builder(
+                          physics: NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: QuranData.numberOfAyat.length,
+                          itemBuilder: (context, int index) {
+                            return _buttonToSora(
+                                QuranData.sour[index], index, context,
+                                QuranData.numberOfAyat[index]);
+                          }),
+                      context
                   ),
                   _gridTile(
-                    ListView.builder(
-                        physics: NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemCount: QuranData.sour.length,
-                        itemBuilder: (context, int index) {
-                          return _buttonToSora(QuranData.sour[index], index, context);
-
-                        }),
+                      ListView.builder(
+                          physics: NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: QuranData.sour.length,
+                          itemBuilder: (context, int index) {
+                            return _buttonToSora(
+                                QuranData.sour[index], index, context);
+                          }),
+                      context
                   ),
                 ],
               ),
@@ -79,12 +91,13 @@ class QuranScreen extends StatelessWidget {
   }
 }
 
-Widget _gridTile(Widget widget) {
+Widget _gridTile(Widget widget,BuildContext context) {
+  AppConfigProvider provider = Provider.of<AppConfigProvider>(context);
   return Expanded(
     child: Container(
       decoration: BoxDecoration(
         border: Border.all(
-          color: HexColor('#B7935F'),
+          color: HexColor(provider.isDarkModeEnabled()?'#FACC1D':'#B7935F'),
           width: 1,
         ),
       ),
@@ -104,10 +117,7 @@ Widget _buttonToSora(String soraName, int index,BuildContext context,[int number
         },
         child: Text(
           numberOfAyat==-1 ? soraName : '$numberOfAyat',
-          style: TextStyle(
-              fontSize: 25,
-              fontWeight: FontWeight.bold
-          ),
+          style: Theme.of(context).textTheme.bodyText1,
           textAlign: TextAlign.center,
         ),
       ));
