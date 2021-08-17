@@ -47,7 +47,7 @@ class _HadeethDetailsScreenState extends State<HadeethDetailsScreen> {
                       onPressed: () {
 
                           Navigator.push(context, MaterialPageRoute(builder: (context){
-                            return MyHomePage(currentIndex: 2,);
+                            return MyHomePage(currentIndex: 3,);
                           }));
 
 

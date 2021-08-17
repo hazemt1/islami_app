@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:islami_app/data/AppConfigProvider.dart';
+import 'package:islami_app/data/UserPreferences.dart';
+import 'package:provider/provider.dart';
 import 'package:settings_ui/settings_ui.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 
 
@@ -9,13 +14,20 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  bool isDark = true;
-  String subtitle = "English";
-
+  bool isDark = false;
+  String subtitle = '';
+  late AppConfigProvider provider;
   @override
   Widget build(BuildContext context) {
+    provider = Provider.of<AppConfigProvider>(context);
+    isDark= provider.isDarkModeEnabled();
+    if(UserPreferences.getLanguage()=='en')
+      subtitle='English';
+    else
+      subtitle='العربية';
     return Scaffold(
-      appBar: AppBar(title: Text('Settings')),
+      backgroundColor: Colors.transparent,
+      appBar: AppBar(title: Text(AppLocalizations.of(context)!.settings)),
       body: buildSettingsList(),
     );
   }
@@ -28,24 +40,30 @@ class _SettingsScreenState extends State<SettingsScreen> {
           title: ' ',
           tiles: [
             SettingsTile(
-              title: 'Language',
+              title: AppLocalizations.of(context)!.language,
               subtitle: subtitle,
               leading: Icon(Icons.language),
               onPressed: (BuildContext context) {
                 setState(() {
-                  subtitle == "English"
-                      ? subtitle = "Arabic"
-                      : subtitle = "English";
+                  if(UserPreferences.getLanguage()=='en') {
+                    subtitle = "Arabic";
+                    provider.changeLanguage('ar');
+                  }
+                  else{
+                    subtitle="English";
+                    provider.changeLanguage('en');
+                  }
                 });
               },
             ),
             SettingsTile.switchTile(
-              title: 'Dark Theme',
+              title: AppLocalizations.of(context)!.themeDark,
               leading: Icon(Icons.phone_android),
               switchValue: isDark,
               onToggle: (value) {
                 setState(() {
                   isDark = value;
+                  provider.toggleTheme();
                 });
               },
             ),
