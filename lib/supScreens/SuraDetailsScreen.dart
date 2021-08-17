@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:islami_app/Screens/MyHomePage.dart';
-import 'package:islami_app/data/AppConfig.dart';
+import 'package:islami_app/data/AppConfigProvider.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -22,10 +22,10 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
   _SuraDetailsScreenState(int pos) {
     readSuraContent('assets/content/${pos}.txt');
   }
-  late AppConfig provider;
+  late AppConfigProvider provider;
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<AppConfig>(context);
+    final provider = Provider.of<AppConfigProvider>(context);
     return Scaffold(
       body: Container(
           decoration: BoxDecoration(
@@ -131,7 +131,7 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
   }
 
   Widget getMainView() {
-    AppConfig provider = Provider.of<AppConfig>(context);
+    AppConfigProvider provider = Provider.of<AppConfigProvider>(context);
     return Container(
         child: Sora.length == 0
             ? Center(child: CircularProgressIndicator())

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:islami_app/data/AppConfig.dart';
+import 'package:islami_app/data/AppConfigProvider.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -27,11 +27,11 @@ class _TasbeehState extends State<Tasbeeh> {
     'لا اله الا الله'
   ];
 
-  late AppConfig provider;
+  late AppConfigProvider provider;
 
   @override
   Widget build(BuildContext context) {
-    provider = Provider.of<AppConfig>(context);
+    provider = Provider.of<AppConfigProvider>(context);
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: Column(
@@ -68,10 +68,10 @@ class _TasbeehState extends State<Tasbeeh> {
               ]
           ),
 
-          SizedBox(height: 60,),
+          SizedBox(height: 20,),
           Text(AppLocalizations.of(context)!.noOfTasabeh
             , style: Theme.of(context).textTheme.bodyText1),
-          SizedBox(height: 30,),
+          SizedBox(height: 10,),
           Container(
             padding: EdgeInsets.all(25),
             decoration: BoxDecoration(

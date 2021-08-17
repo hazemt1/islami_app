@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:islami_app/Screens/MyHomePage.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:islami_app/data/AppConfig.dart';
+import 'package:islami_app/data/AppConfigProvider.dart';
 import 'package:provider/provider.dart';
 
 import '../data/Hadeth.dart';
@@ -27,10 +27,10 @@ class _HadeethDetailsScreenState extends State<HadeethDetailsScreen> {
       function();
     });
   }
-  late AppConfig provider;
+  late AppConfigProvider provider;
   @override
   Widget build(BuildContext context) {
-    AppConfig provider = Provider.of<AppConfig>(context);
+    provider = Provider.of<AppConfigProvider>(context);
     return Scaffold(
       body: Container(
           decoration: BoxDecoration(
@@ -110,7 +110,7 @@ class _HadeethDetailsScreenState extends State<HadeethDetailsScreen> {
   }
 
   Widget getMainView() {
-    AppConfig provider = Provider.of<AppConfig>(context);
+    AppConfigProvider provider = Provider.of<AppConfigProvider>(context);
     return Container(
         child: hadeth.hadethList.length == 0
             ? Center(child: CircularProgressIndicator())

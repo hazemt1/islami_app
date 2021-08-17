@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:islami_app/data/AppConfig.dart';
+import 'package:islami_app/data/AppConfigProvider.dart';
 import 'package:islami_app/data/Hadeth.dart';
 import 'package:islami_app/supScreens/HadethDetailsScreen.dart';
 import 'package:provider/provider.dart';
@@ -23,11 +23,11 @@ class _HadethScreenState extends State<HadethScreen> {
     });
     // print(hadethList.length);
   }
-  late AppConfig provider;
+  late AppConfigProvider provider;
   @override
   Widget build(BuildContext context) {
 
-    final provider = Provider.of<AppConfig>(context);
+    final provider = Provider.of<AppConfigProvider>(context);
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: SingleChildScrollView(

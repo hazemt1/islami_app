@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:islami_app/data/AppConfigProvider.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:islami_app/data/AppConfig.dart';
+
 import 'package:islami_app/data/MyThemeData.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:provider/provider.dart';
+
 import 'Screens/MyHomePage.dart';
 import 'data/UserPreferences.dart';
 
@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(create: (context)=> AppConfigProvider(),
      builder: (context ,widget){
       final provider =Provider.of<AppConfigProvider>(context);
+      provider.themeMode = UserPreferences.getThemePreference();
       return MaterialApp(
         localizationsDelegates: [
           AppLocalizations.delegate,

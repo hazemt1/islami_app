@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:islami_app/data/AppConfig.dart';
+
+import 'package:islami_app/data/AppConfigProvider.dart';
 import 'package:islami_app/data/QuranData.dart';
 import 'package:islami_app/supScreens/SuraDetailsScreen.dart';
 import 'package:provider/provider.dart';
@@ -11,11 +12,11 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class QuranScreen extends StatelessWidget {
 
-  late AppConfig provider;
+  late AppConfigProvider provider;
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<AppConfig>(context);
+
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: SingleChildScrollView(
@@ -91,7 +92,7 @@ class QuranScreen extends StatelessWidget {
 }
 
 Widget _gridTile(Widget widget,BuildContext context) {
-  AppConfig provider = Provider.of<AppConfig>(context);
+  AppConfigProvider provider = Provider.of<AppConfigProvider>(context);
   return Expanded(
     child: Container(
       decoration: BoxDecoration(
