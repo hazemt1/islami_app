@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Tasbeeh extends StatefulWidget {
 
@@ -35,7 +36,7 @@ class _TasbeehState extends State<Tasbeeh> {
           Container(
             margin: EdgeInsets.only(top: 10,),
             child: Text(
-              'إسلامي',
+              AppLocalizations.of(context)!.title,
               style: TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.bold
@@ -64,7 +65,8 @@ class _TasbeehState extends State<Tasbeeh> {
           ),
 
           SizedBox(height: 10,),
-          Text('عدد التسبيحات', style: TextStyle(
+          Text(AppLocalizations.of(context)!.noOfTasabeh
+            , style: TextStyle(
             fontSize: 30,
             color: Colors.black,
             fontWeight: FontWeight.bold,

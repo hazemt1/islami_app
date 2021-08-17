@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:islami_app/Screens/MyHomePage.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../data/Hadeth.dart';
 
 class HadeethDetailsScreen extends StatefulWidget {
@@ -53,8 +53,8 @@ class _HadeethDetailsScreenState extends State<HadeethDetailsScreen> {
                     child: Padding(
                       padding: const EdgeInsets.only(right: 50.0),
                       child: Text(
-                        'إسلامي',
-                        style: TextStyle(fontSize: 30, color: Colors.black),
+                        AppLocalizations.of(context)!.title,
+                        style: TextStyle(fontSize: 30, color: Colors.black, fontWeight: FontWeight.bold),
                         textAlign: TextAlign.center,
                       ),
                     ),
@@ -71,24 +71,19 @@ class _HadeethDetailsScreenState extends State<HadeethDetailsScreen> {
                     child: Column(
                       children: [
                         Container(
-                          width: 220,
+                          padding: EdgeInsets.symmetric(horizontal: 10),
                           margin: EdgeInsets.all(20),
-                          child: Row(
-                            children: <Widget>[
-                              Container(
-                                margin: EdgeInsets.only(left: 30),
-                                child: Text(
-                                  hadeth.hadethList.length == 0 ? '' :
-                                  hadeth.hadethList[pos].title,
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      fontSize: 25,
-                                      fontWeight: FontWeight.bold
-                                  ),
-                                ),
+                          child: Container(
+                            // margin: EdgeInsets.only(left: 30),
+                            child: Text(
+                              hadeth.hadethList.length == 0 ? '' :
+                              hadeth.hadethList[pos].title,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.bold
                               ),
-                              //Icon(Icons)
-                            ],
+                            ),
                           ),
                           decoration: BoxDecoration(
                               border: Border(
