@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:islami_app/UserPreferences.dart';
+import 'package:islami_app/data/UserPreferences.dart';
 
 class AppConfigProvider extends ChangeNotifier {
 

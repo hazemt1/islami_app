@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:islami_app/AppConfigProvider.dart';
+import 'package:islami_app/data/AppConfigProvider.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'Screens/MyHomePage.dart';
-import 'UserPreferences.dart';
+import 'data/UserPreferences.dart';
 
 Future main() async{
   WidgetsFlutterBinding.ensureInitialized();

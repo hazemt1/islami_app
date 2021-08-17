@@ -9,5 +9,9 @@
   "hadethNo": "Hadith No",
   "noOfTasabeh": "No of praises",
   "language": "Language",
-  "settings": "settings"
+  "settings": "settings",
+  "radioQuran": "Holy Quran Radio",
+  "theme" : "theme",
+  "dark" : "dark",
+  "light" : "light"
 }
