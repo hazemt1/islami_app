@@ -1,61 +1,48 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:islami_app/data/AppConfigProvider.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami_app/data/AppConfig.dart';
 import 'package:islami_app/data/MyThemeData.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:provider/provider.dart';
 import 'Screens/MyHomePage.dart';
+import 'data/UserPreferences.dart';
 
-void main() {
+Future main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await UserPreferences.init();
   runApp(MyApp());
 }
 
-class MyApp extends StatefulWidget {
-
-  @override
-  _MyAppState createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-
-
-  //Shared Preference
-  // getThemePreference() async {
-  //   SharedPreferences preferences = await SharedPreferences.getInstance();
-  //   var name = preferences.getString('theme');
-  //   return name;
-  // }
-  //
-  // String kind='';
-  // @override
-  // void initState() {
-  //   kind = getThemePreference().toString();
-  //   super.initState();
-  // }
-
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
     ));
-    return ChangeNotifierProvider(create: (buildContext) => AppConfig(),
-    builder: (buildContext,widget){
-      final provider = Provider.of<AppConfig>(buildContext);
-      // if(kind == 'light')
-      //   provider.themeMode=ThemeMode.light;
-      // else
-      //   provider.themeMode = ThemeMode.dark;
-
+    return ChangeNotifierProvider(create: (context)=> AppConfigProvider(),
+     builder: (context ,widget){
+      final provider =Provider.of<AppConfigProvider>(context);
       return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: MyHomePage(
-          currentIndex: 3,
-        ),
+        localizationsDelegates: [
+          AppLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
         themeMode: provider.themeMode,
         theme: MyThemeData.lightTheme,
         darkTheme: MyThemeData.darkTheme,
+        supportedLocales: AppLocalizations.supportedLocales,
+        debugShowCheckedModeBanner: false,
+        locale: Locale.fromSubtags(languageCode: UserPreferences.getLanguage()),
+        home: MyHomePage(
+          currentIndex: 3,
+        ),
       );
-    }
+     },
     );
   }
 }

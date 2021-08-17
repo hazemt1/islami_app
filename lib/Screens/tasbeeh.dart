@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:islami_app/data/AppConfig.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Tasbeeh extends StatefulWidget {
 
@@ -34,17 +35,18 @@ class _TasbeehState extends State<Tasbeeh> {
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
             margin: EdgeInsets.only(top: 10,),
             child: Text(
-              'إسلامي',
+              AppLocalizations.of(context)!.title,
               style: Theme.of(context).textTheme.headline3
             ),
           ),
-          SizedBox(height: 30,),
           Stack(
+
               children: [
                 Container(
                   padding: EdgeInsets.fromLTRB(40, 0, 0, 0),
@@ -67,7 +69,8 @@ class _TasbeehState extends State<Tasbeeh> {
           ),
 
           SizedBox(height: 60,),
-          Text('عدد التسبيحات', style: Theme.of(context).textTheme.bodyText1),
+          Text(AppLocalizations.of(context)!.noOfTasabeh
+            , style: Theme.of(context).textTheme.bodyText1),
           SizedBox(height: 30,),
           Container(
             padding: EdgeInsets.all(25),
@@ -76,12 +79,7 @@ class _TasbeehState extends State<Tasbeeh> {
               color: HexColor(provider.isDarkModeEnabled()?'#141A2E':'#B7935F').withOpacity(0.57),
             ),
             child: Text(tasbeehCount.toString(), style: Theme.of(context).textTheme.bodyText1
-            // TextStyle(
-            //   fontSize: 25,
-            //   color: Colors.black,
-            //   fontWeight: FontWeight.bold,
-            //   decoration: TextDecoration.none,
-            // ),),
+
           ),
           ),
           SizedBox(height: 10,),

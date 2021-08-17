@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:islami_app/Screens/MyHomePage.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami_app/data/AppConfig.dart';
 import 'package:provider/provider.dart';
 
@@ -44,9 +45,12 @@ class _HadeethDetailsScreenState extends State<HadeethDetailsScreen> {
                     width: 50,
                     child: MaterialButton(
                       onPressed: () {
+
                           Navigator.push(context, MaterialPageRoute(builder: (context){
                             return MyHomePage(currentIndex: 2,);
                           }));
+
+
                       },
                       child: Icon(Icons.arrow_back_outlined),
                     ),
@@ -55,7 +59,7 @@ class _HadeethDetailsScreenState extends State<HadeethDetailsScreen> {
                     child: Padding(
                       padding: const EdgeInsets.only(right: 50.0),
                       child: Text(
-                        'إسلامي',
+                        AppLocalizations.of(context)!.title,
                         style: Theme
                             .of(context)
                             .textTheme
@@ -77,21 +81,16 @@ class _HadeethDetailsScreenState extends State<HadeethDetailsScreen> {
                     child: Column(
                       children: [
                         Container(
-                          width: 220,
+                          padding: EdgeInsets.symmetric(horizontal: 10),
                           margin: EdgeInsets.all(20),
-                          child: Row(
-                            children: <Widget>[
-                              Container(
-                                margin: EdgeInsets.only(left: 30),
-                                child: Text(
-                                  hadeth.hadethList.length == 0 ? '' :
-                                  hadeth.hadethList[pos].title,
-                                  textAlign: TextAlign.center,
-                                  style: Theme.of(context).textTheme.bodyText1
-                                ),
-                              ),
-                              //Icon(Icons)
-                            ],
+                          child: Container(
+                            // margin: EdgeInsets.only(left: 30),
+                            child: Text(
+                              hadeth.hadethList.length == 0 ? '' :
+                              hadeth.hadethList[pos].title,
+                              textAlign: TextAlign.center,
+                              style: Theme.of(context).textTheme.bodyText1,
+                            ),
                           ),
                           decoration: BoxDecoration(
                               border: Border(

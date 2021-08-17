@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:islami_app/Screens/QuranScreen.dart';
+import 'package:islami_app/Screens/RadioScreen.dart';
 import 'package:islami_app/Screens/tasbeeh.dart';
 import 'package:islami_app/data/AppConfig.dart';
 import 'package:provider/provider.dart';
 import 'HadethScreen.dart';
+
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../data/TEMP.dart';
 
@@ -23,7 +26,7 @@ class _MyHomePageState extends State<MyHomePage> {
   int _currentIndex ;
   final List<Widget> _children = [
     // Here the widgets should be open when the icons are clicked
-    PlaceholderWidget(Colors.white),
+    RadioScreen(),
     Tasbeeh(),
     HadethScreen(),
     QuranScreen()
@@ -66,14 +69,14 @@ class _MyHomePageState extends State<MyHomePage> {
               BottomNavigationBarItem(
                   icon: new Image.asset("assets/images/radio.png",color:
                   _currentIndex==0?Colors.black:Colors.white,height: 25,width: 28,),
-                  title: Text(_currentIndex==0?'الراديو':'',style: TextStyle(color: Colors.black),)),
+                  title: Text(_currentIndex==0?AppLocalizations.of(context)!.radio:'',style: TextStyle(color: Colors.black),)),
               BottomNavigationBarItem(
                   icon: new Image.asset("assets/images/sebha.png",color: _currentIndex==1?Colors.black:Colors.white,height: 25,width: 28,),
-                  title: Text(_currentIndex==1?'التسبيح':'',style: TextStyle(color: Colors.black),)),
+                  title: Text(_currentIndex==1?AppLocalizations.of(context)!.tasabeh:'',style: TextStyle(color: Colors.black),)),
               BottomNavigationBarItem(
                   icon: new Image.asset(
                       "assets/images/quran-quran-svgrepo-com.png",color: _currentIndex==2?Colors.black:Colors.white,height: 25,width: 28,),
-                  title: Text(_currentIndex==2?'الأحاديث':'',style: TextStyle(color: Colors.black),)),
+                  title: Text(_currentIndex==2?AppLocalizations.of(context)!.hadith:'',style: TextStyle(color: Colors.black),)),
               BottomNavigationBarItem(
                   icon: new Image.asset("assets/images/moshaf_gold.png",color: _currentIndex==3?Colors.black:Colors.white,height: 25,width: 28,),
                   title: Text(_currentIndex==3?'القرآن':'',style: TextStyle(color: Colors.black),)),
