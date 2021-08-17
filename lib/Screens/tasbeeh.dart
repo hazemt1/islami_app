@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:islami_app/data/AppConfig.dart';
+import 'package:provider/provider.dart';
 
 class Tasbeeh extends StatefulWidget {
 
@@ -24,22 +26,21 @@ class _TasbeehState extends State<Tasbeeh> {
     'لا اله الا الله'
   ];
 
+  late AppConfig provider;
+
   @override
   Widget build(BuildContext context) {
+    provider = Provider.of<AppConfig>(context);
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: Column(
-        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
             margin: EdgeInsets.only(top: 10,),
             child: Text(
               'إسلامي',
-              style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold
-              ),
+              style: Theme.of(context).textTheme.headline3
             ),
           ),
           SizedBox(height: 30,),
@@ -66,26 +67,22 @@ class _TasbeehState extends State<Tasbeeh> {
           ),
 
           SizedBox(height: 60,),
-          Text('عدد التسبيحات', style: TextStyle(
-            fontSize: 30,
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
-            height: .5,
-            decoration: TextDecoration.none,
-          ),),
-          SizedBox(height: 40,),
+          Text('عدد التسبيحات', style: Theme.of(context).textTheme.bodyText1),
+          SizedBox(height: 30,),
           Container(
             padding: EdgeInsets.all(25),
             decoration: BoxDecoration(
               borderRadius: BorderRadiusDirectional.circular(30),
-              color: HexColor('#B7935F').withOpacity(0.57),
+              color: HexColor(provider.isDarkModeEnabled()?'#141A2E':'#B7935F').withOpacity(0.57),
             ),
-            child: Text(tasbeehCount.toString(), style: TextStyle(
-              fontSize: 25,
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
-              decoration: TextDecoration.none,
-            ),),
+            child: Text(tasbeehCount.toString(), style: Theme.of(context).textTheme.bodyText1
+            // TextStyle(
+            //   fontSize: 25,
+            //   color: Colors.black,
+            //   fontWeight: FontWeight.bold,
+            //   decoration: TextDecoration.none,
+            // ),),
+          ),
           ),
           SizedBox(height: 10,),
 
@@ -95,14 +92,9 @@ class _TasbeehState extends State<Tasbeeh> {
             margin: EdgeInsets.all(10),
             decoration: BoxDecoration(
               borderRadius: BorderRadiusDirectional.circular(25),
-              color: HexColor('#B7935F'),
+              color: HexColor(provider.isDarkModeEnabled()?'#FACC1D':'#B7935F'),
             ),
-            child: Text(prayers[prayerPosition], style: TextStyle(
-              fontSize: 25,
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              decoration: TextDecoration.none,
-            ),),
+            child: Text(prayers[prayerPosition], style: Theme.of(context).textTheme.bodyText2),
           )
         ],
       ),

@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:islami_app/Screens/QuranScreen.dart';
 import 'package:islami_app/Screens/tasbeeh.dart';
+import 'package:islami_app/data/AppConfig.dart';
+import 'package:provider/provider.dart';
 import 'HadethScreen.dart';
 
 import '../data/TEMP.dart';
@@ -35,11 +37,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+
+    final provider = Provider.of<AppConfig>(context);
     return  Scaffold(
         body: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('assets/images/default_bg.png'),
+              image: AssetImage((provider.isDarkModeEnabled())?'assets/images/bg.png':'assets/images/default_bg.png'),
               fit: BoxFit.fill,
             ),
           ),
@@ -48,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
         bottomNavigationBar: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('assets/images/Rectangle.png'),
+              image: AssetImage(provider.isDarkModeEnabled()?'assets/images/Rectangle 2.png':'assets/images/Rectangle.png'),
               fit: BoxFit.fill
             )
           ),
@@ -60,7 +64,8 @@ class _MyHomePageState extends State<MyHomePage> {
             elevation: 0,
             items: [
               BottomNavigationBarItem(
-                  icon: new Image.asset("assets/images/radio.png",color: _currentIndex==0?Colors.black:Colors.white,height: 25,width: 28,),
+                  icon: new Image.asset("assets/images/radio.png",color:
+                  _currentIndex==0?Colors.black:Colors.white,height: 25,width: 28,),
                   title: Text(_currentIndex==0?'الراديو':'',style: TextStyle(color: Colors.black),)),
               BottomNavigationBarItem(
                   icon: new Image.asset("assets/images/sebha.png",color: _currentIndex==1?Colors.black:Colors.white,height: 25,width: 28,),

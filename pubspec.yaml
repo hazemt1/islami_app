@@ -24,6 +24,7 @@ dependencies:
   flutter_launcher_icons: "^0.7.2"
   flutter:
     sdk: flutter
+  provider: ^5.0.0
 
 
 
@@ -32,6 +33,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   hexcolor: ^2.0.4
   flutter_spinkit: "^5.0.0"
+  shared_preferences: ^2.0.6
 
 dev_dependencies:
   flutter_test:
