@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:islami_app/data/AppConfigProvider.dart';
 import 'package:islami_app/data/Hadeth.dart';
 import 'package:islami_app/supScreens/HadethDetailsScreen.dart';
+import 'package:provider/provider.dart';
+
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HadethScreen extends StatefulWidget {
@@ -20,9 +23,11 @@ class _HadethScreenState extends State<HadethScreen> {
     });
     // print(hadethList.length);
   }
-
+  late AppConfigProvider provider;
   @override
   Widget build(BuildContext context) {
+
+    final provider = Provider.of<AppConfigProvider>(context);
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: SingleChildScrollView(
@@ -33,7 +38,7 @@ class _HadethScreenState extends State<HadethScreen> {
                 margin: EdgeInsets.only(top: 10),
                 child: Text(
                   AppLocalizations.of(context)!.title,
-                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                  style: Theme.of(context).textTheme.headline3,
                 ),
               ),
               Image(image: AssetImage('assets/images/hadeth_logo.png')),
@@ -42,8 +47,8 @@ class _HadethScreenState extends State<HadethScreen> {
                 height: 50,
                 decoration: BoxDecoration(
                   border: Border(
-                    top: BorderSide(color: HexColor('#B7935F'), width: 2),
-                    bottom: BorderSide(color: HexColor('#B7935F'), width: 2),
+                    top: BorderSide(color: HexColor(provider.isDarkModeEnabled()?'#FACC1D':'#B7935F'), width: 2), //#FACC1D
+                    bottom: BorderSide(color: HexColor(provider.isDarkModeEnabled()?'#FACC1D':'#B7935F'), width: 2),
                   ),
                 ),
                 child: Row(
@@ -51,7 +56,7 @@ class _HadethScreenState extends State<HadethScreen> {
                     Expanded(
                       child: Text(
                         AppLocalizations.of(context)!.hadith,
-                        style: TextStyle(fontSize: 25),
+                        style: Theme.of(context).textTheme.bodyText1,
                         textAlign: TextAlign.center,
                       ),
                     )
@@ -86,7 +91,7 @@ Widget _buttonToSora(String hadethName, int index, BuildContext context) {
         },
         child: Text(
           '${AppLocalizations.of(context)!.hadethNo} ${index+1}',
-          style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+          style: Theme.of(context).textTheme.bodyText1,
           textAlign: TextAlign.center,
         ),
       ));

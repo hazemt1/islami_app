@@ -4,6 +4,9 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:islami_app/data/AppConfigProvider.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import 'package:islami_app/data/MyThemeData.dart';
+
 import 'Screens/MyHomePage.dart';
 import 'data/UserPreferences.dart';
 
@@ -22,6 +25,7 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(create: (context)=> AppConfigProvider(),
      builder: (context ,widget){
       final provider =Provider.of<AppConfigProvider>(context);
+      provider.themeMode = UserPreferences.getThemePreference();
       return MaterialApp(
         localizationsDelegates: [
           AppLocalizations.delegate,
@@ -29,6 +33,9 @@ class MyApp extends StatelessWidget {
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
         ],
+        themeMode: provider.themeMode,
+        theme: MyThemeData.lightTheme,
+        darkTheme: MyThemeData.darkTheme,
         supportedLocales: AppLocalizations.supportedLocales,
         debugShowCheckedModeBanner: false,
         locale: Locale.fromSubtags(languageCode: UserPreferences.getLanguage()),
@@ -38,6 +45,5 @@ class MyApp extends StatelessWidget {
       );
      },
     );
-
   }
 }

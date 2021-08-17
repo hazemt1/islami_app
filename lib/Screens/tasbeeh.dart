@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:islami_app/data/AppConfigProvider.dart';
+import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Tasbeeh extends StatefulWidget {
@@ -25,8 +27,11 @@ class _TasbeehState extends State<Tasbeeh> {
     'لا اله الا الله'
   ];
 
+  late AppConfigProvider provider;
+
   @override
   Widget build(BuildContext context) {
+    provider = Provider.of<AppConfigProvider>(context);
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: Column(
@@ -37,10 +42,7 @@ class _TasbeehState extends State<Tasbeeh> {
             margin: EdgeInsets.only(top: 10,),
             child: Text(
               AppLocalizations.of(context)!.title,
-              style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold
-              ),
+              style: Theme.of(context).textTheme.headline3
             ),
           ),
           Stack(
@@ -50,11 +52,13 @@ class _TasbeehState extends State<Tasbeeh> {
                   padding: EdgeInsets.fromLTRB(40, 0, 0, 0),
                   alignment: AlignmentDirectional.topCenter,
                   child: Image.asset('assets/images/head of seb7a.png'),),
-                Center(
-                  child: MaterialButton(
-                    padding: EdgeInsets.fromLTRB(0, 79, 0, 0),
-
-                    onPressed: (){clicked();},
+                Container(
+                  padding: EdgeInsets.fromLTRB(0, 79, 0, 0),
+                  alignment: Alignment.center,
+                  child: InkWell(
+                    onTap: (){
+                      clicked();
+                      },
                     child: Transform.rotate(
                       angle: _myAngle,
                       child: Image.asset('assets/images/body of seb7a.png'),
@@ -64,44 +68,31 @@ class _TasbeehState extends State<Tasbeeh> {
               ]
           ),
 
-          SizedBox(height: 10,),
+          SizedBox(height: 20,),
           Text(AppLocalizations.of(context)!.noOfTasabeh
-            , style: TextStyle(
-            fontSize: 30,
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
-            height: .5,
-            decoration: TextDecoration.none,
-          ),),
+            , style: Theme.of(context).textTheme.bodyText1),
           SizedBox(height: 10,),
           Container(
-            padding: EdgeInsets.all(15),
+            padding: EdgeInsets.all(25),
             decoration: BoxDecoration(
               borderRadius: BorderRadiusDirectional.circular(30),
-              color: HexColor('#B7935F').withOpacity(0.57),
+              color: HexColor(provider.isDarkModeEnabled()?'#141A2E':'#B7935F').withOpacity(0.57),
             ),
-            child: Text(tasbeehCount.toString(), style: TextStyle(
-              fontSize: 30,
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
-              decoration: TextDecoration.none,
-            ),),
+            child: Text(tasbeehCount.toString(), style: Theme.of(context).textTheme.bodyText1
+
+          ),
           ),
           SizedBox(height: 10,),
+
           Container(
             height: 60,
             padding: EdgeInsets.all(10),
             margin: EdgeInsets.all(10),
             decoration: BoxDecoration(
               borderRadius: BorderRadiusDirectional.circular(25),
-              color: HexColor('#B7935F'),
+              color: HexColor(provider.isDarkModeEnabled()?'#FACC1D':'#B7935F'),
             ),
-            child: Text(prayers[prayerPosition], style: TextStyle(
-              fontSize: 25,
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              decoration: TextDecoration.none,
-            ),),
+            child: Text(prayers[prayerPosition], style: Theme.of(context).textTheme.bodyText2),
           )
         ],
       ),
