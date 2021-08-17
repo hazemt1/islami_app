@@ -29,7 +29,7 @@ class _TasbeehState extends State<Tasbeeh> {
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
@@ -42,18 +42,20 @@ class _TasbeehState extends State<Tasbeeh> {
               ),
             ),
           ),
+          SizedBox(height: 30,),
           Stack(
-
               children: [
                 Container(
                   padding: EdgeInsets.fromLTRB(40, 0, 0, 0),
                   alignment: AlignmentDirectional.topCenter,
                   child: Image.asset('assets/images/head of seb7a.png'),),
-                Center(
-                  child: MaterialButton(
-                    padding: EdgeInsets.fromLTRB(0, 79, 0, 0),
-
-                    onPressed: (){clicked();},
+                Container(
+                  padding: EdgeInsets.fromLTRB(0, 79, 0, 0),
+                  alignment: Alignment.center,
+                  child: InkWell(
+                    onTap: (){
+                      clicked();
+                      },
                     child: Transform.rotate(
                       angle: _myAngle,
                       child: Image.asset('assets/images/body of seb7a.png'),
@@ -63,7 +65,7 @@ class _TasbeehState extends State<Tasbeeh> {
               ]
           ),
 
-          SizedBox(height: 10,),
+          SizedBox(height: 60,),
           Text('عدد التسبيحات', style: TextStyle(
             fontSize: 30,
             color: Colors.black,
@@ -71,21 +73,22 @@ class _TasbeehState extends State<Tasbeeh> {
             height: .5,
             decoration: TextDecoration.none,
           ),),
-          SizedBox(height: 10,),
+          SizedBox(height: 40,),
           Container(
-            padding: EdgeInsets.all(15),
+            padding: EdgeInsets.all(25),
             decoration: BoxDecoration(
               borderRadius: BorderRadiusDirectional.circular(30),
               color: HexColor('#B7935F').withOpacity(0.57),
             ),
             child: Text(tasbeehCount.toString(), style: TextStyle(
-              fontSize: 30,
+              fontSize: 25,
               color: Colors.black,
               fontWeight: FontWeight.bold,
               decoration: TextDecoration.none,
             ),),
           ),
           SizedBox(height: 10,),
+
           Container(
             height: 60,
             padding: EdgeInsets.all(10),
