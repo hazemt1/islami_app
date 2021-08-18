@@ -51,7 +51,8 @@ class _TasbeehState extends State<Tasbeeh> {
                 Container(
                   padding: EdgeInsets.fromLTRB(40, 0, 0, 0),
                   alignment: AlignmentDirectional.topCenter,
-                  child: Image.asset('assets/images/head of seb7a.png'),),
+                  child: Image.asset('assets/images/head of seb7a.png',
+                  color: provider.isDarkModeEnabled()?Colors.amberAccent:HexColor('#B7935F'),),),
                 Container(
                   padding: EdgeInsets.fromLTRB(0, 79, 0, 0),
                   alignment: Alignment.center,
@@ -61,19 +62,20 @@ class _TasbeehState extends State<Tasbeeh> {
                       },
                     child: Transform.rotate(
                       angle: _myAngle,
-                      child: Image.asset('assets/images/body of seb7a.png'),
+                      child: Image.asset('assets/images/body of seb7a.png',
+                        color: provider.isDarkModeEnabled()?Colors.amberAccent:HexColor('#B7935F'),),
                     ),
                   ),
                 ),
               ]
           ),
 
-          SizedBox(height: 20,),
+
           Text(AppLocalizations.of(context)!.noOfTasabeh
             , style: Theme.of(context).textTheme.bodyText1),
-          SizedBox(height: 10,),
+
           Container(
-            padding: EdgeInsets.all(25),
+            padding: EdgeInsets.all(20),
             decoration: BoxDecoration(
               borderRadius: BorderRadiusDirectional.circular(30),
               color: HexColor(provider.isDarkModeEnabled()?'#141A2E':'#B7935F').withOpacity(0.57),
@@ -82,7 +84,6 @@ class _TasbeehState extends State<Tasbeeh> {
 
           ),
           ),
-          SizedBox(height: 10,),
 
           Container(
             height: 60,

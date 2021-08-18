@@ -10,7 +10,7 @@ class MyThemeData {
       ),
         bodyText1: TextStyle(
             color: Colors.black,
-            fontSize: 25,
+            fontSize: 23,
             fontWeight: FontWeight.bold,
             decoration: TextDecoration.none
         ),
@@ -46,6 +46,9 @@ class MyThemeData {
         fontWeight: FontWeight.bold,
         decoration: TextDecoration.none,
       ),
+    ),
+    bottomSheetTheme: BottomSheetThemeData(
+      backgroundColor: Colors.white12
     ),
     iconTheme: IconThemeData(
         color: Colors.white

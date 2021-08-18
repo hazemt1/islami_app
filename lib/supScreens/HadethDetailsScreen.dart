@@ -19,6 +19,7 @@ class HadeethDetailsScreen extends StatefulWidget {
 class _HadeethDetailsScreenState extends State<HadeethDetailsScreen> {
   int pos;
   AllHadeth hadeth=new AllHadeth();
+
   _HadeethDetailsScreenState([this.pos = 0]) {
     loadHadethFile(hadeth,_setState);
   }
@@ -31,6 +32,8 @@ class _HadeethDetailsScreenState extends State<HadeethDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     provider = Provider.of<AppConfigProvider>(context);
+    var paddingTitle = provider.currentLocale=='en'?
+    EdgeInsets.only(right: 50):EdgeInsets.only(left: 50);
     return Scaffold(
       body: Container(
           decoration: BoxDecoration(
@@ -39,36 +42,42 @@ class _HadeethDetailsScreenState extends State<HadeethDetailsScreen> {
                   fit: BoxFit.fill)),
           child: Column(
             children: [
-              Row(
-                children: [
-                  Container(
-                    width: 50,
-                    child: MaterialButton(
-                      onPressed: () {
+              Padding(
+                padding: const EdgeInsets.only(top: 10.0),
+                child: Row(
+                  children: [
+                    Container(
+                      width: 50,
+                      child: MaterialButton(
+                        onPressed: () {
 
-                          Navigator.push(context, MaterialPageRoute(builder: (context){
-                            return MyHomePage(currentIndex: 3,);
-                          }));
+                            Navigator.push(context, MaterialPageRoute(builder: (context){
+                              return MyHomePage(currentIndex: 3,);
+                            }));
 
 
-                      },
-                      child: Icon(Icons.arrow_back_outlined),
-                    ),
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.only(right: 50.0),
-                      child: Text(
-                        AppLocalizations.of(context)!.title,
-                        style: Theme
-                            .of(context)
-                            .textTheme
-                            .headline3,
-                        textAlign: TextAlign.center,
+                        },
+                        child: Icon(
+                          Icons.arrow_back_outlined,
+                          color: provider.isDarkModeEnabled()?Colors.white:Colors.black,
+                        ),
                       ),
                     ),
-                  )
-                ],
+                    Expanded(
+                      child: Padding(
+                        padding: paddingTitle,
+                        child: Text(
+                          AppLocalizations.of(context)!.title,
+                          style: Theme
+                              .of(context)
+                              .textTheme
+                              .headline3,
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    )
+                  ],
+                ),
               ),
               Expanded(
                 child: Container(

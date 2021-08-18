@@ -47,9 +47,11 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage((provider.isDarkModeEnabled())
-                  ? 'assets/images/bg.png'
-                  : 'assets/images/default_bg.png'),
+              image: AssetImage(
+                (provider.isDarkModeEnabled())
+                    ? 'assets/images/bg.png'
+                    : 'assets/images/default_bg.png',
+              ),
               fit: BoxFit.fill,
             ),
           ),
@@ -57,9 +59,11 @@ class _MyHomePageState extends State<MyHomePage> {
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage(provider.isDarkModeEnabled()
-                    ? 'assets/images/Rectangle 2.png'
-                    : 'assets/images/Rectangle.png'),
+                image: AssetImage(
+                  provider.isDarkModeEnabled()
+                      ? 'assets/images/Rectangle 2.png'
+                      : 'assets/images/Rectangle.png',
+                ),
                 fit: BoxFit.fill)),
         child: BottomNavigationBar(
           onTap: onTabTapped,
@@ -68,106 +72,59 @@ class _MyHomePageState extends State<MyHomePage> {
           backgroundColor: Colors.transparent,
           elevation: 0,
           items: [
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.settings,
-                color: _currentIndex == 0
-                    ? (provider.isDarkModeEnabled()
-                        ? Colors.amberAccent
-                        : Colors.black)
-                    : Colors.white,
-              ),
-              title: Text(
-                _currentIndex == 0
-                    ? AppLocalizations.of(context)!.settings
-                    : '',
-                style: TextStyle(
-                    color: (provider.isDarkModeEnabled()
-                        ? Colors.amberAccent
-                        : Colors.black)),
-              ),
+            bottomItem(
+              "assets/images/setting_icon.png",
+              AppLocalizations.of(context)!.settings,
+              provider,
+              0,
             ),
-            BottomNavigationBarItem(
-              icon: new Image.asset(
-                "assets/images/radio.png",
-                color: _currentIndex == 1
-                    ? (provider.isDarkModeEnabled()
-                        ? Colors.amberAccent
-                        : Colors.black)
-                    : Colors.white,
-                height: 25,
-                width: 28,
-              ),
-              title: Text(
-                _currentIndex == 1 ? AppLocalizations.of(context)!.radio : '',
-                style: TextStyle(
-                  color: (provider.isDarkModeEnabled()
-                      ? Colors.amberAccent
-                      : Colors.black),
-                ),
-              ),
+            bottomItem(
+              "assets/images/radio.png",
+              AppLocalizations.of(context)!.radio,
+              provider,
+              1,
             ),
-            BottomNavigationBarItem(
-              icon: new Image.asset(
-                "assets/images/sebha.png",
-                color: _currentIndex == 2
-                    ? (provider.isDarkModeEnabled()
-                        ? Colors.amberAccent
-                        : Colors.black)
-                    : Colors.white,
-                height: 25,
-                width: 28,
-              ),
-              title: Text(
-                _currentIndex == 2 ? AppLocalizations.of(context)!.tasabeh : '',
-                style: TextStyle(
-                  color: (provider.isDarkModeEnabled()
-                      ? Colors.amberAccent
-                      : Colors.black),
-                ),
-              ),
+            bottomItem(
+              "assets/images/sebha.png",
+              AppLocalizations.of(context)!.tasabeh,
+              provider,
+              2,
             ),
-            BottomNavigationBarItem(
-              icon: new Image.asset(
-                "assets/images/quran-quran-svgrepo-com.png",
-                color: _currentIndex == 3
-                    ? (provider.isDarkModeEnabled()
-                        ? Colors.amberAccent
-                        : Colors.black)
-                    : Colors.white,
-                height: 25,
-                width: 28,
-              ),
-              title: Text(
-                _currentIndex == 3 ? AppLocalizations.of(context)!.hadith : '',
-                style: TextStyle(
-                  color: (provider.isDarkModeEnabled()
-                      ? Colors.amberAccent
-                      : Colors.black),
-                ),
-              ),
+            bottomItem(
+              "assets/images/quran-quran-svgrepo-com.png",
+              AppLocalizations.of(context)!.hadith,
+              provider,
+              3,
             ),
-            BottomNavigationBarItem(
-              icon: new Image.asset(
-                "assets/images/moshaf_gold.png",
-                color: _currentIndex == 4
-                    ? (provider.isDarkModeEnabled()
-                        ? Colors.amberAccent
-                        : Colors.black)
-                    : Colors.white,
-                height: 25,
-                width: 28,
-              ),
-              title: Text(
-                _currentIndex == 4 ? AppLocalizations.of(context)!.quran : '',
-                style: TextStyle(
-                  color: (provider.isDarkModeEnabled()
-                      ? Colors.amberAccent
-                      : Colors.black),
-                ),
-              ),
+            bottomItem(
+              "assets/images/moshaf_gold.png",
+              AppLocalizations.of(context)!.quran,
+              provider,
+              4,
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  BottomNavigationBarItem bottomItem(String imageUrl, String title,
+      AppConfigProvider provider, int currentIndex) {
+    return BottomNavigationBarItem(
+      icon: new Image.asset(
+        imageUrl,
+        color: _currentIndex == currentIndex
+            ? (provider.isDarkModeEnabled() ? Colors.amberAccent : Colors.black)
+            : Colors.white,
+        height: 25,
+        width: 28,
+      ),
+      title: Text(
+        _currentIndex == currentIndex ? title : '',
+        style: TextStyle(
+          color: (provider.isDarkModeEnabled()
+              ? Colors.amberAccent
+              : Colors.black),
         ),
       ),
     );
