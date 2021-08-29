@@ -8,6 +8,8 @@ class UserPreferences{
 
   static const _theme = 'theme';
 
+  static const _radioStation = 'radio';
+
   static Future init() async =>
       _preferences = await SharedPreferences.getInstance();
 
@@ -16,6 +18,11 @@ class UserPreferences{
 
   static String getLanguage() =>
       _preferences.getString(_language).toString();
+
+  static Future setRadioStation(int stationIndex) async =>
+      await _preferences.setString(_radioStation, stationIndex.toString());
+
+  static int getRadioStation() => int.parse(_preferences.getString(_radioStation).toString());
 
   static Future saveThemePreference(ThemeMode _themeMode) async {
     String name;
