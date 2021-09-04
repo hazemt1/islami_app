@@ -14,8 +14,8 @@ class RadioService extends StatefulWidget {
 
 class _RadioServiceState extends State<RadioService> {
   late AppConfigProvider provider;
-  // int index = 0;
-  int index = UserPreferences.getRadioStation();
+  int index = 0;
+  //int index = UserPreferences.getRadioStation();
   AudioPlayer audioPlayer = AudioPlayer();
   bool playing = false;
 
